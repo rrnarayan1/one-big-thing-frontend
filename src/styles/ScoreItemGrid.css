@@ -1,0 +1,11 @@
+.ScoreItemGrid .ScoreItem {
+  float: left;
+  border-radius: 0px;
+  border-left: 0px;
+}
+
+.ScoreItemGrid .ScoreItem:first-child {
+  float: left;
+  border-radius: 3px 0px 0px 3px;
+  border-left: 1px solid black;
+}

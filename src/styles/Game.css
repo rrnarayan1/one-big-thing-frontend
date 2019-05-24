@@ -1,7 +1,23 @@
-.Game--stats {
-/*    text-align: center;*/
+.Game {
+  display: flex;
+  flex-direction: column;
 }
 
-.Game--header .ScoreItem{
-    float: right;
+.Game--header {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Game--header-right {
+  align-self: flex-start;
+}
+
+.Game--content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }

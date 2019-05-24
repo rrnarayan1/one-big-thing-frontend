@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
 import ScoreItem from './ScoreItem.js';
+import ScoreItemGrid from './ScoreItemGrid.js';
 import '../styles/Game.css';
 
 
@@ -46,11 +47,11 @@ class Game extends React.Component {
       const score = String(pts)+"-"+String(opp_pts);
       const date = new Date(Date.parse(game["GAME_DATE"]));
       const date_str = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-
+      console.log(this.state.scores)
       return (
         <div className="Game">
-          <Row className="Game--header">
-            <Col>
+          <div className="Game--header">
+            <div className="Game--header-left">
               <h2>{game["TEAM_NAME"]}</h2>
               <div className="Game--stats">
                 {date_str + " | "}
@@ -58,14 +59,18 @@ class Game extends React.Component {
                 {score + " | "}
                 {"Game " + game["GAME_NUM"]}
               </div>
-            </Col>
-            <Col  xs={2}>
+            </div>
+            <div className="Game--header-right">
               <ScoreItem
-                className="Game--obt"
                 score={obt.absolute}>
               </ScoreItem>
-            </Col>
-          </Row>
+            </div>
+          </div>
+          <div className="Game--content">
+            <ScoreItemGrid
+              scores={this.state.scores}>
+            </ScoreItemGrid>
+          </div>
         </div>
 
       );
