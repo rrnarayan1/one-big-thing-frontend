@@ -1,0 +1,16 @@
+
+.ScoreItem {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 3px;
+    width: min-content;
+}
+
+.ScoreItem--Score {
+    font-size: 32px;
+}
+
+.ScoreItem--Stat {
+    font-size: 12px;
+    text-align: center;
+}

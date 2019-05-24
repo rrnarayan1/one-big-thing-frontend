@@ -1,0 +1,7 @@
+.Game--stats {
+/*    text-align: center;*/
+}
+
+.Game--header .ScoreItem{
+    float: right;
+}
