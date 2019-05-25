@@ -5,15 +5,19 @@ import '../styles/ScoreItemGrid.css';
 class ScoreItemGrid extends React.Component {
   render() {
     const scores = this.props.scores;
+    const stats = this.props.stats;
     return (
       <div className="ScoreItemGrid">
         {Object.keys(scores).map((key, index) => {
           const score = {score: scores[key], stat: key}
+          const stat = stats[key]
           return (
             <ScoreItem
               key={index}
               size="small"
-              score={score}>
+              score={score}
+              stat={stat}
+              onHoverShowStat={true}>
             </ScoreItem>);
         })}
       </div>
