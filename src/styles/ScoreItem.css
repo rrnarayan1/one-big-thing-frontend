@@ -16,8 +16,8 @@
   font-size: 14px;
 }
 
-.small .ScoreItem--Stat {
-  font-size: 8px;
+.small .ScoreItem--StatName {
+  font-size: 10px;
 }
 
 .ScoreItem--Score {
@@ -25,7 +25,7 @@
     text-align: center;
 }
 
-.ScoreItem--Stat {
+.ScoreItem--StatName {
     font-size: 12px;
     text-align: center;
 }

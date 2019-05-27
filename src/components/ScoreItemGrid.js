@@ -9,16 +9,20 @@ class ScoreItemGrid extends React.Component {
     return (
       <div className="ScoreItemGrid">
         {Object.keys(scores).map((key, index) => {
-          const score = {score: scores[key], stat: key}
+          const score = scores[key]
           const stat = stats[key]
+          const statName = key
           return (
             <ScoreItem
               key={index}
               size="small"
               score={score}
               stat={stat}
+              statName={statName}
+              showStatDefault={this.props.showStatDefault}
               onHoverShowStat={true}>
-            </ScoreItem>);
+            </ScoreItem>
+          );
         })}
       </div>
     );

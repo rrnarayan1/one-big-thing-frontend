@@ -4,27 +4,35 @@ import '../styles/ScoreItem.css';
 class ScoreItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {display: this.props.score.score}
+    this.state = {display: this.props.showStatDefault ? this.props.stat : this.props.score}
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.showStatDefault != prevProps.showStatDefault) {
+      this.setState({display: this.props.showStatDefault ? this.props.stat : this.props.score})
+    }
+  }
+
   render() {
-    const item = this.props.score;
     const isSmall = this.props.size === "small";
-    const score = item.score;
-    const stat = this.props.stat;
+    const showStatDefault = this.props.showStatDefault;
+    const display = showStatDefault ? this.props.stat : this.props.score;
+    const hover = showStatDefault ? this.props.score : this.props.stat;
+    const statName = this.props.statName;
     const useHover = this.props.onHoverShowStat;
-    const percent = getGreenToRed((score+5)*10);
+    const percent = getGreenToRed((this.props.score+5)*10);
     return (
       <div 
         className={isSmall ? "ScoreItem small" : "ScoreItem"}
         style={{background: percent}}
-        onMouseEnter={() => useHover ? this.setState({display: stat}) : null}
-        onMouseLeave={() => useHover ? this.setState({display: score}) : null}
+        onMouseEnter={() => useHover ? this.setState({display: hover}) : null}
+        onMouseLeave={() => useHover ? this.setState({display: display}) : null}
         >
         <div className="ScoreItem--Score">
           {this.state.display}
         </div>
-        <div className="ScoreItem--Stat">
-          {item.stat}
+        <div className="ScoreItem--StatName">
+          {statName}
         </div>
       </div>
     );
