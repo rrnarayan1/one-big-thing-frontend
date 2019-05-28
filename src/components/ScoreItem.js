@@ -8,7 +8,7 @@ class ScoreItem extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.showStatDefault != prevProps.showStatDefault) {
+    if (this.props.showStatDefault !== prevProps.showStatDefault) {
       this.setState({display: this.props.showStatDefault ? this.props.stat : this.props.score})
     }
   }

@@ -79,6 +79,7 @@ class Game extends React.Component {
               showStatDefault={this.state.showStats}>
             </ScoreItemGrid>
           </div>
+          <p> Hover to see {this.state.showStats ? "scores" : "stats"} </p>
         </div>
 
       );
