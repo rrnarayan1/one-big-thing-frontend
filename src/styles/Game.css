@@ -15,6 +15,16 @@
   align-self: flex-start;
 }
 
+#Game--header-opp-team {
+  color: gray;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.Game--stats-button {
+  margin-top: 5px;
+}
+
 .Game--content {
 /*  display: flex;
   align-items: center;
