@@ -6,8 +6,15 @@
 }
 
 .GameItem--logo {
-  width: 100px;
-  height: 100px;
+  width: 50%;
+  height: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+  .GameItem--logo {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .GameItem--win {
@@ -21,4 +28,14 @@
 
 .red {
   color: red;
+}
+
+.GameItem--button button{
+  float: right;
+}
+
+.GameItem--border {
+  width: 90%;
+  border-bottom: 1px solid #969696;
+  margin: 0 auto;
 }

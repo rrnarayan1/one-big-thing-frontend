@@ -1,7 +1,6 @@
 import React from 'react'
 import queryString from 'query-string';
 import axios from 'axios';
-//import { Row, Col } from 'react-bootstrap';
 import ScoreItem from './ScoreItem.js';
 import ScoreItemGrid from './ScoreItemGrid.js';
 import { Button } from 'react-bootstrap';

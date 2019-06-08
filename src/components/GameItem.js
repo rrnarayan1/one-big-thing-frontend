@@ -1,4 +1,6 @@
 import React from 'react';
+import { Row, Col, Button } from 'react-bootstrap';
+import moment from 'moment';
 import '../styles/GameItem.css';
 
 class GameItem extends React.Component {
@@ -8,21 +10,24 @@ class GameItem extends React.Component {
     const pts = game["PTS"];
     const opp_pts = pts + game["PLUS_MINUS"];
     const score = String(pts)+"-"+String(opp_pts);
-    const date = new Date(Date.parse(game["GAME_DATE"]));
-    const date_str = date.getMonth() + "/" + date.getDate();
+    const date = moment(game["GAME_DATE"])
     return (
-      <div className="GameItem" onClick={this.props.onClick}>
-        <div className="GameItem--date"> 
-          {date_str}
-        </div>
-        <img className="GameItem--logo" src={oppTeam["LOGO"]} />
-        <div className={game["WL"]==="W" ? "GameItem--win green" : "GameItem--win red"}>
-          {game["WL"]}
-        </div>
-        <div className="GameItem--score">
+      <Row className="GameItem">
+        <Col xs={1} className="GameItem--date"> 
+          {date.format("ddd, MMM D")}
+        </Col>
+        <Col xs={3}>
+          <img className="GameItem--logo" src={oppTeam["LOGO"]} />
+        </Col>
+        <Col className={"GameItem--score"}>
+          <span className={game["WL"]==="W" ? "green" : "red"}> {game["WL"]} </span>
           {score}
-        </div>
-      </div>
+        </Col>
+        <Col className={"GameItem--button"}>
+          <Button variant="outline-primary" onClick={this.props.onClick}> Show Scores </Button>
+        </Col>
+        <div className={"GameItem--border"}>&nbsp;</div>
+      </Row>
     )
   }
 }
