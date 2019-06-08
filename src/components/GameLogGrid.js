@@ -8,9 +8,16 @@ class GameLogGrid extends React.Component {
     return (
       <div className="GameLogGrid">
         {games.map(game => {
-          console.log(game)
+          const seasonId = game["SEASON_ID"];
+          const teamId = game["TEAM_ID"];
+          const gameId = game["GAME_ID"];
+          const link = "/game?seasonId="+seasonId+"&teamId="+teamId+"&gameId="+gameId
           return (
-            <GameItem key={game["GAME_NUM"]} game={game}> </GameItem>
+            <GameItem 
+              key={game["GAME_NUM"]} 
+              game={game}
+              onClick={() => window.location.href=link}>
+            </GameItem>
           );
         })}
       </div>
