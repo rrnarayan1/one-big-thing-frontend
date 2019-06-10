@@ -1,6 +1,7 @@
 import React from 'react'
 import queryString from 'query-string';
 import axios from 'axios';
+import config from '../config.js'
 import ScoreItem from './ScoreItem.js';
 import ScoreItemGrid from './ScoreItemGrid.js';
 import { Button } from 'react-bootstrap';
@@ -17,7 +18,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://127.0.0.1:5000/score', {
+    axios.get(config.backendBase+'/score', {
       params: {
         seasonId : this.params.seasonId,
         teamId : this.params.teamId,

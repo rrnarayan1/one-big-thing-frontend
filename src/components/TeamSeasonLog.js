@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import config from '../config.js'
 import GameLogGrid from './GameLogGrid'
 import '../styles/TeamSeasonLog.css';
 
@@ -12,7 +13,7 @@ class TeamSeasonLog extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get('http://127.0.0.1:5000/games', {
+    // axios.get(config.backendBase+'/games', {
     //   params: {
     //     seasonId : this.props.seasonId,
     //     teamId : this.props.teamId,
