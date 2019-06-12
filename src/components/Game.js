@@ -1,8 +1,9 @@
 import React from 'react'
 import queryString from 'query-string';
 import axios from 'axios';
-import { Row, Col } from 'react-bootstrap';
 import ScoreItem from './ScoreItem.js';
+import ScoreItemGrid from './ScoreItemGrid.js';
+import { Button } from 'react-bootstrap';
 import '../styles/Game.css';
 
 
@@ -16,7 +17,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://35.203.94.32:5000/score', {
+    axios.get('http://127.0.0.1:5000/score', {
       params: {
         seasonId : this.params.seasonId,
         teamId : this.params.teamId,
@@ -25,8 +26,7 @@ class Game extends React.Component {
     })
       .then(response => {
          const data = response.data;
-         console.log(data);
-         this.setState(data);
+         this.setState({data: data});
       })
       .catch(error => {
         console.log(error);
@@ -34,35 +34,51 @@ class Game extends React.Component {
   }
 
   render() {
-    const game = this.state.game;
-    if (game) {
-      console.log(this.state)
-      const obt = this.state.obt;
-      const pts = game["PTS"];
+    const data = this.state.data;
+    if (data.game) {
+      const game = data.game
+      const obt = data.obt;
+      const pts = data.stats["PTS"];
       const opp_pts = pts + game["PLUS_MINUS"];
       const score = String(pts)+"-"+String(opp_pts);
       const date = new Date(Date.parse(game["GAME_DATE"]));
       const date_str = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-
       return (
         <div className="Game">
-          <Row className="Game--header">
-            <Col>
-              <h2>{game["TEAM_NAME"]}</h2>
+          <div className="Game--header">
+            <div className="Game--header-left">
+              <h2>{data.team["TEAM_NAME"]} 
+                <span id="Game--header-opp-team"> vs <a id="Game--header-opp-team" href={"/game?seasonId="+this.params.seasonId+"&teamId="+data.opp_team["TEAM_ID"]+"&gameId="+this.params.gameId}>
+                  {data.opp_team["TEAM_NAME"]}</a>
+                 </span>
+               </h2>
               <div className="Game--stats">
                 {date_str + " | "}
                 {game["WL"]+" | "}
                 {score + " | "}
                 {"Game " + game["GAME_NUM"]}
               </div>
-            </Col>
-            <Col  xs={2}>
+            </div>
+            <div className="Game--header-right">
               <ScoreItem
-                className="Game--obt"
-                score={obt.absolute}>
+                score={obt.absolute.score}
+                statName={obt.absolute.stat}>
               </ScoreItem>
-            </Col>
-          </Row>
+            </div>
+          </div>
+          <div className="Game--content">
+            <ScoreItemGrid
+              scores={data.scores}
+              stats={data.stats}
+              showStatDefault={this.state.showStats}>
+            </ScoreItemGrid>
+            <Button
+              className="Game--stats-button"
+              variant="outline-secondary"
+              onClick={() => this.setState({showStats: !this.state.showStats})}>
+              Show All {this.state.showStats ? "Scores" : "Stats"}
+            </Button>
+          </div>
         </div>
 
       );
