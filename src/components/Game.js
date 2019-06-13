@@ -53,8 +53,8 @@ class Game extends React.Component {
           <div className="Game--header">
             <div className="Game--header-left">
               <h2>{data.team["TEAM_NAME"]} 
-                <span id="Game--header-opp-team"> vs <a id="Game--header-opp-team" href={"/game?seasonId="+this.params.seasonId+"&teamId="+data.opp_team["TEAM_ID"]+"&gameId="+this.params.gameId}>
-                  {data.opp_team["TEAM_NAME"]}</a>
+                <span id="Game--header-opp-team"> vs <a id="Game--header-opp-team" href={"/game?seasonId="+this.params.seasonId+"&teamId="+game["OPP_TEAM"]["TEAM_ID"]+"&gameId="+this.params.gameId}>
+                  {game["OPP_TEAM"]["TEAM_NAME"]}</a>
                  </span>
                </h2>
               <div className="Game--stats">
@@ -66,8 +66,8 @@ class Game extends React.Component {
             </div>
             <div className="Game--header-right">
               <ScoreItem
-                score={obt.absolute.score}
-                statName={obt.absolute.stat}>
+                score={obt.default.score}
+                statName={obt.default.stat}>
               </ScoreItem>
             </div>
           </div>
