@@ -3,7 +3,6 @@ import { Row, Col, Button } from 'react-bootstrap';
 import moment from 'moment';
 import '../styles/GameItem.css';
 import ScoreItem from './ScoreItem'
-import '../styles/ScoreItem.css';
 
 class GameItem extends React.Component {
   render() {
@@ -27,12 +26,13 @@ class GameItem extends React.Component {
           <span className={game["WL"]==="W" ? "green" : "red"}> {game["WL"]} </span>
           {score}
         </Col>
-        <Col>
+        <Col xs={3}>
+          <div className="GameItem--obt">
           <ScoreItem
             score={obt.absolute.score}
-            statName={obt.absolute.stat}
-            size="medium">
+            statName={obt.absolute.stat}>
           </ScoreItem>
+          </div>
         </Col>
         <Col className={"GameItem--button"}>
           <Button variant="outline-primary" onClick={this.props.onClick}> Show Scores </Button>
