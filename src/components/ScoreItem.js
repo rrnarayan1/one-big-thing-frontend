@@ -22,8 +22,8 @@ class ScoreItem extends React.Component {
     const useHover = this.props.onHoverShowStat;
     const percent = getGreenToRed((this.props.score+5)*10);
     return (
-      <div 
-        className={isSmall ? "ScoreItem small" : "ScoreItem"}
+      <div
+        className={isSmall ? "ScoreItem " + this.props.size : "ScoreItem"}
         style={{background: percent}}
         onMouseEnter={() => useHover ? this.setState({display: hover}) : null}
         onMouseLeave={() => useHover ? this.setState({display: display}) : null}
