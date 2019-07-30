@@ -1,4 +1,4 @@
-// Sets base url for server calls. Feel free to change the 
+// Sets base url for server calls. Feel free to change the
 // dev environment to point to the running server for front-end testing
 
 const dev = {
