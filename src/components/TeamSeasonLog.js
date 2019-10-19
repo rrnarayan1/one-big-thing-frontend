@@ -2,13 +2,16 @@ import React from 'react'
 import axios from 'axios';
 import config from '../config.js'
 import GameLogGrid from './GameLogGrid'
+import TeamSeasonStatsSummaryModal from './TeamSeasonStatsSummaryModal'
+import { Button } from 'react-bootstrap';
 import '../styles/TeamSeasonLog.css';
 
 class TeamSeasonLog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {}
+      data: {},
+      showSeasonStatsModal: false
     };
   }
 
@@ -18,6 +21,7 @@ class TeamSeasonLog extends React.Component {
         seasonId : this.props.seasonId,
         teamId : this.props.teamId,
         withOBT: true,
+        withSummary: true,
       }
     })
       .then(response => {
@@ -34,6 +38,7 @@ class TeamSeasonLog extends React.Component {
     if (data.team) {
       console.log(data)
       const team = data.team;
+      const summary = data.summary;
       return (
         <div className="TeamSeasonLog">
          <div className="TeamSeasonLog--header">
@@ -42,7 +47,14 @@ class TeamSeasonLog extends React.Component {
              <h2> {team["TEAM_NAME"]} </h2>
            </div>
            <div className="TeamSeasonLog--header-right">
-             {this.props.seasonId}
+            <Button onClick={() => this.setState({showSeasonStatsModal: true})}> View Season Stats </Button>
+            <TeamSeasonStatsSummaryModal 
+              show={this.state.showSeasonStatsModal}
+              winStat={summary["wins_stats"]}
+              lossStat={summary["loss_stats"]}
+              onHide={() => this.setState({showSeasonStatsModal: false})}>
+            </TeamSeasonStatsSummaryModal>
+            {this.props.seasonId}
            </div>
          </div>
          <div className="TeamSeasonLog--content">
