@@ -29,8 +29,8 @@ class GameItem extends React.Component {
         <Col xs={3}>
           <div className="GameItem--obt">
           <ScoreItem
-            score={obt.absolute.score}
-            statName={obt.absolute.stat}>
+            score={obt.default.score}
+            statName={obt.default.stat}>
           </ScoreItem>
           </div>
         </Col>

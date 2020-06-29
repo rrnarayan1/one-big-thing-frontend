@@ -2,6 +2,7 @@ import React from 'react'
 import config from '../config.js'
 import { Modal } from 'react-bootstrap';
 import Plot from 'react-plotly.js';
+import SeasonStatPlot from './SeasonStatPlot'
 import '../styles/TeamSeasonStatsSummaryModal.css';
 
 class TeamSeasonStatsSummaryModal extends React.Component {
@@ -23,34 +24,16 @@ class TeamSeasonStatsSummaryModal extends React.Component {
           <Modal.Title>Season Summary</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Plot
-            data={[
-              {
-                x: winStat["stat_list"],
-                type: 'histogram',
-                marker: {color: 'green'},
-              },
-              {
-                x: [winStat["stat_loss_avg"]],
-                y: [20],
-                width: 0.1,
-                type: 'bar',
-              },
-              {
-                x: [winStat["stat_avg"]],
-                y: [20],
-                width: 0.1,
-                type: 'bar',
-              },
-              {
-                x: [winStat["stat_win_avg"]],
-                y: [20],
-                width: 0.1,
-                type: 'bar',
-              }
-            ]}
-            layout={ {width: 640, height: 480, barmode: "overlay", title: 'Winning Stat'} }
-          />
+          <SeasonStatPlot
+            stat={winStat}
+            title={"In games won, this stat helped the most:"}
+            plotColor={"green"}>
+          </SeasonStatPlot>
+          <SeasonStatPlot
+            stat={lossStat}
+            title={"In games lost, this stat hurt the most:"}
+            plotColor={"red"}>
+          </SeasonStatPlot>
 
         </Modal.Body>
       </Modal>

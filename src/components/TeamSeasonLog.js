@@ -39,6 +39,7 @@ class TeamSeasonLog extends React.Component {
       console.log(data)
       const team = data.team;
       const summary = data.summary;
+      console.log(summary);
       return (
         <div className="TeamSeasonLog">
          <div className="TeamSeasonLog--header">
