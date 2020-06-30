@@ -52,10 +52,16 @@ class Game extends React.Component {
         <div className="Game">
           <div className="Game--header">
             <div className="Game--header-left">
-              <h2>{data.team["TEAM_NAME"]} 
-                <span id="Game--header-opp-team"> vs <a id="Game--header-opp-team" href={"/game?seasonId="+this.params.seasonId+"&teamId="+game["OPP_TEAM"]["TEAM_ID"]+"&gameId="+this.params.gameId}>
-                  {game["OPP_TEAM"]["TEAM_NAME"]}</a>
-                 </span>
+              <h2>
+                <a id="Game--header-team" href={"/team?seasonId="+this.params.seasonId+"&teamId="+data.team["TEAM_ID"]}>
+                  {data.team["TEAM_NAME"]}
+                </a>
+                <span id="Game--header-opp-team"> 
+                  vs 
+                  <a id="Game--header-opp-team" href={"/game?seasonId="+this.params.seasonId+"&teamId="+game["OPP_TEAM"]["TEAM_ID"]+"&gameId="+this.params.gameId}>
+                    {" "+game["OPP_TEAM"]["TEAM_NAME"]}
+                  </a>
+                </span>
                </h2>
               <div className="Game--stats">
                 {date_str + " | "}

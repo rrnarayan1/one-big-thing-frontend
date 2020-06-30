@@ -20,7 +20,9 @@ class GameItem extends React.Component {
           {date.format("ddd, MMM D")}
         </Col>
         <Col xs={3}>
-          <img className="GameItem--logo" src={oppTeam["LOGO"]} />
+          <a href={this.props.onLogoClickUrl}>
+            <img className="GameItem--logo" src={oppTeam["LOGO"]} />
+          </a>
         </Col>
         <Col className={"GameItem--score"}>
           <span className={game["WL"]==="W" ? "green" : "red"}> {game["WL"]} </span>

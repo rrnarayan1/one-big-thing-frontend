@@ -12,11 +12,13 @@ class GameLogGrid extends React.Component {
           const teamId = game["TEAM_ID"];
           const gameId = game["GAME_ID"];
           const link = "/game?seasonId="+seasonId+"&teamId="+teamId+"&gameId="+gameId
+          const oppTeamLink = "/team?seasonId="+seasonId+"&teamId="+game["OPP_TEAM"]["TEAM_ID"]
           return (
             <GameItem 
               key={game["GAME_NUM"]} 
               game={game}
-              onClick={() => window.location.href=link}>
+              onClick={() => window.location.href=link}
+              onLogoClickUrl={oppTeamLink}>
             </GameItem>
           );
         })}
