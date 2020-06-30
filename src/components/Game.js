@@ -37,7 +37,6 @@ class Game extends React.Component {
   render() {
     const data = this.state.data;
     if (data.game) {
-      console.log(data)
       const game = data.game
       const obt = data.obt;
       const pts = data.stats["PTS"];
