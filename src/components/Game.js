@@ -1,6 +1,7 @@
 import React from 'react'
 import queryString from 'query-string';
 import axios from 'axios';
+import config from '../config.js'
 import ScoreItem from './ScoreItem.js';
 import ScoreItemGrid from './ScoreItemGrid.js';
 import { Button } from 'react-bootstrap';
@@ -17,7 +18,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://127.0.0.1:5000/score', {
+    axios.get(config.backendBase+'/score', {
       params: {
         seasonId : this.params.seasonId,
         teamId : this.params.teamId,
@@ -47,10 +48,16 @@ class Game extends React.Component {
         <div className="Game">
           <div className="Game--header">
             <div className="Game--header-left">
-              <h2>{data.team["TEAM_NAME"]} 
-                <span id="Game--header-opp-team"> vs <a id="Game--header-opp-team" href={"/game?seasonId="+this.params.seasonId+"&teamId="+data.opp_team["TEAM_ID"]+"&gameId="+this.params.gameId}>
-                  {data.opp_team["TEAM_NAME"]}</a>
-                 </span>
+              <h2>
+                <a id="Game--header-team" href={"/team?seasonId="+this.params.seasonId+"&teamId="+data.team["TEAM_ID"]}>
+                  {data.team["TEAM_NAME"]}
+                </a>
+                <span id="Game--header-opp-team"> 
+                  vs 
+                  <a id="Game--header-opp-team" href={"/game?seasonId="+this.params.seasonId+"&teamId="+game["OPP_TEAM"]["TEAM_ID"]+"&gameId="+this.params.gameId}>
+                    {" "+game["OPP_TEAM"]["TEAM_NAME"]}
+                  </a>
+                </span>
                </h2>
               <div className="Game--stats">
                 {date_str + " | "}
@@ -61,8 +68,8 @@ class Game extends React.Component {
             </div>
             <div className="Game--header-right">
               <ScoreItem
-                score={obt.absolute.score}
-                statName={obt.absolute.stat}>
+                score={obt.default.score}
+                statName={obt.default.stat}>
               </ScoreItem>
             </div>
           </div>

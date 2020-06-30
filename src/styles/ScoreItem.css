@@ -7,17 +7,20 @@
     width: 95px;
 }
 
-.small {
-  height: 55px;
-  width: 55px;
+.large {
+  height: 150px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.small .ScoreItem--Score {
-  font-size: 14px;
+.large .ScoreItem--Score {
+  font-size: 32px;
 }
 
-.small .ScoreItem--StatName {
-  font-size: 10px;
+.large .ScoreItem--StatName {
+  font-size: 12px;
 }
 
 .ScoreItem--Score {

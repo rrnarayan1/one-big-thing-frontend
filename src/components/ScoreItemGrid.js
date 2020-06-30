@@ -15,7 +15,7 @@ class ScoreItemGrid extends React.Component {
           return (
             <ScoreItem
               key={index}
-              size="small"
+              size="large"
               score={score}
               stat={stat}
               statName={statName}

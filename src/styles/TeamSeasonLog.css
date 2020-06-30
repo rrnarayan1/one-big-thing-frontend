@@ -1,0 +1,20 @@
+.TeamSeasonLog--header {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.TeamSeasonLog--header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.TeamSeasonLog--header-left img {
+  max-height: 100px;
+  max-width: 100px;
+}
+

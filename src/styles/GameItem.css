@@ -1,0 +1,58 @@
+.GameItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.GameItem--logo {
+  width: 50%;
+  height: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+  .GameItem--logo {
+    width: 100%;
+    height: 100%;
+  }
+
+  .GameItem--obt .ScoreItem {
+    height: 55px;
+    width: 55px;
+  }
+
+  .GameItem--obt .ScoreItem--Score {
+    font-size: 14px;
+  }
+
+  .GameItem--obt .ScoreItem--StatName {
+    font-size: 10px;
+  }
+
+  .GameItem--button button{
+    font-size: 8px;
+  }
+}
+
+.GameItem--win {
+  font-size: 32px;
+  padding: 0 5px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.GameItem--button button{
+  float: right;
+}
+
+.GameItem--border {
+  width: 90%;
+  border-bottom: 1px solid #969696;
+  margin: 0 auto;
+}

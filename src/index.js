@@ -5,6 +5,7 @@ import './styles/index.css';
 import Home from './components/Home';
 import About from './components/About';
 import Game from './components/Game';
+import Team from './components/Team';
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
@@ -13,6 +14,7 @@ const routing = (
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/game" component={Game} />
+      <Route path="/team" component={Team} />
     </div>
   </Router>
 )
