@@ -16,19 +16,18 @@ class GameItem extends React.Component {
 
     return (
       <Row className="GameItem">
-        <Col xs={1} className="GameItem--date">
+        <Col xs={2} className="GameItem--date">
           {date.format("ddd, MMM D")}
         </Col>
         <Col xs={3}>
           <a href={this.props.onLogoClickUrl}>
             <img className="GameItem--logo" src={oppTeam["LOGO"]} />
-          </a>
         </Col>
         <Col className={"GameItem--score"}>
           <span className={game["WL"]==="W" ? "green" : "red"}> {game["WL"]} </span>
           {score}
         </Col>
-        <Col xs={3}>
+        <Col>
           <div className="GameItem--obt">
           <ScoreItem
             score={obt.default.score}
