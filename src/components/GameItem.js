@@ -22,6 +22,7 @@ class GameItem extends React.Component {
         <Col xs={3}>
           <a href={this.props.onLogoClickUrl}>
             <img className="GameItem--logo" src={oppTeam["LOGO"]} />
+          </a>
         </Col>
         <Col className={"GameItem--score"}>
           <span className={game["WL"]==="W" ? "green" : "red"}> {game["WL"]} </span>
